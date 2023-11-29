@@ -3,8 +3,8 @@
 #include <time.h>
 #include <omp.h>
 
-#define MAX_THREADS 10
-#define NUMBER_OF_ATTEMPTS 200
+#define MAX_THREADS 20
+#define NUMBER_OF_ATTEMPTS 100
 #define ARRAY_SIZE 10000000
 
 #define RANDOM_SEED 920215
@@ -87,11 +87,10 @@ double *check_different_threads(int max_threads, long array_size, double (*find_
 #ifdef _OPENMP
 double find_max_parallel(int *array, long array_size, int number_of_threads) {
     int  max   = -1;
-    ++number_of_threads; //..
 
     double start = omp_get_wtime();
     // #pragma omp parallel num_threads(number_of_threads) shared(array, array_size) reduction(max: max) default(none)
-    #pragma omp parallel num_threads(omp_get_max_threads()) shared(array, array_size) reduction(max: max) default(none)
+    #pragma omp parallel num_threads(number_of_threads) shared(array, array_size) reduction(max: max) default(none)
     {
         #pragma omp for
         for (long i = 0; i < array_size; ++i)

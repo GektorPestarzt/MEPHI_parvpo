@@ -4,9 +4,9 @@ RUN apk update && apk add git make gcc musl-dev
 
 WORKDIR /usr/src/app
 
-RUN git clone https://github.com/GektorPestarzt/MEPHI_parvpo.git/src
+RUN git clone https://github.com/GektorPestarzt/MEPHI_parvpo.git
 
-WORKDIR /usr/src/app/MEPHI_parvpo/lab1
+WORKDIR /usr/src/app/MEPHI_parvpo/lab1/src
 
 RUN make parallel
 CMD ["./parallel.out"]

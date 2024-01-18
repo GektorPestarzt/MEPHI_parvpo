@@ -10,7 +10,6 @@ all: linear parallel clean
 
 linear: $(MAIN)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) -o linear.out
-	./linear.out
 
 parallel: $(MAIN)
 	$(CC) $(CFLAGS) $^ $(LDFLAGS) $(OMPFLAGS) -o parallel.out

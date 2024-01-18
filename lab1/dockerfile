@@ -1,6 +1,6 @@
-FROM nginx
+FROM alpine
 
-RUN apt-get update && apt-get install -y build-essential git
+RUN apk update && apk add git make gcc musl-dev
 
 WORKDIR /usr/src/app
 
@@ -10,5 +10,3 @@ WORKDIR /usr/src/app/MEPHI_parvpo/lab1
 
 RUN make parallel
 CMD ["./parallel.out"]
-
-# CMD ["nginx", "-g", "daemon off;"]
